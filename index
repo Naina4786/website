@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cricket Nations</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="animation">
+    <div class="bat"></div>
+    <div class="ball"></div>
+  </div>
+
+  <h1>Cricket Playing Nations</h1>
+  <div class="flags-grid" id="flags-container"></div>
+
+  <script>
+    const teams = [
+      "India", "Afghanistan", "Ireland", "Pakistan", "Australia",
+      "Sri Lanka", "Bangladesh", "England", "West Indies", "South Africa",
+      "Zimbabwe", "New Zealand", "Malaysia", "Nepal", "Germany", "Namibia",
+      "Denmark", "Singapore", "Papua New Guinea", "Kuwait", "Vanuatu", "Jersey",
+      "Oman", "Fiji", "Italy", "Botswana", "Belgium", "Uganda", "Canada",
+      "United Arab Emirates", "Hong Kong", "Kenya", "United States of America",
+      "Scotland", "Netherlands", "Bermuda", "Iran"
+    ];
+
+    const container = document.getElementById("flags-container");
+
+    teams.forEach(team => {
+      const flagCode = team.toLowerCase().replace(/ /g, "-");
+      const flagDiv = document.createElement("div");
+      flagDiv.className = "flag-item";
+      flagDiv.innerHTML = `
+        <img src="https://flagcdn.com/48x36/${getCountryCode(team)}.png" alt="${team} flag" />
+        <span>${team}</span>
+      `;
+      container.appendChild(flagDiv);
+    });
+
+    function getCountryCode(name) {
+      const map = {
+        "India": "in", "Afghanistan": "af", "Ireland": "ie", "Pakistan": "pk",
+        "Australia": "au", "Sri Lanka": "lk", "Bangladesh": "bd", "England": "gb-eng",
+        "West Indies": "jm", "South Africa": "za", "Zimbabwe": "zw", "New Zealand": "nz",
+        "Malaysia": "my", "Nepal": "np", "Germany": "de", "Namibia": "na",
+        "Denmark": "dk", "Singapore": "sg", "Papua New Guinea": "pg", "Kuwait": "kw",
+        "Vanuatu": "vu", "Jersey": "je", "Oman": "om", "Fiji": "fj", "Italy": "it",
+        "Botswana": "bw", "Belgium": "be", "Uganda": "ug", "Canada": "ca",
+        "United Arab Emirates": "ae", "Hong Kong": "hk", "Kenya": "ke",
+        "United States of America": "us", "Scotland": "gb-sct", "Netherlands": "nl",
+        "Bermuda": "bm", "Iran": "ir"
+      };
+      return map[name] || "un";
+    }
+  </script>
+</body>
+</html>
