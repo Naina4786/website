@@ -1,0 +1,6 @@
+cricket-flags-site/
+├── public/
+│   └── flags/         <-- (Flags should go here)
+├── index.html
+├── style.css
+├── README.md
